@@ -1,0 +1,17 @@
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\bin\Debug\net5.0-windows\WinFormsApp14.exe
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\bin\Debug\net5.0-windows\WinFormsApp14.deps.json
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\bin\Debug\net5.0-windows\WinFormsApp14.runtimeconfig.json
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\bin\Debug\net5.0-windows\WinFormsApp14.runtimeconfig.dev.json
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\bin\Debug\net5.0-windows\WinFormsApp14.dll
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\bin\Debug\net5.0-windows\WinFormsApp14.pdb
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.Form1.resources
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.csproj.GenerateResource.cache
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.AssemblyInfoInputs.cache
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.AssemblyInfo.cs
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.csproj.CoreCompileInputs.cache
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.dll
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\refint\WinFormsApp14.dll
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.pdb
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\WinFormsApp14.genruntimeconfig.cache
+C:\Users\Mohsen\source\repos\WinFormsApp14\WinFormsApp14\obj\Debug\net5.0-windows\ref\WinFormsApp14.dll

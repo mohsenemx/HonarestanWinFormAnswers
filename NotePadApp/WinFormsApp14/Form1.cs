@@ -36,19 +36,29 @@ namespace WinFormsApp14
                 DialogResult r = MessageBox.Show("Do you want to save your changes?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
                 if (r == DialogResult.Yes)
                 {
-                    SaveFileDialog f = new SaveFileDialog();
-                    f.Filter = "Text File|*.txt";
-                    f.ShowDialog();
-                    File.WriteAllText(f.FileName, richTextBox1.Text);
-                    richTextBox1.Text = "";
-                    filename = f.FileName;
-                    filePath = f.FileName;
-                    this.Text = filename;
+                    if (isCurrentFileSaved)
+                    {
+                        File.WriteAllText(filePath, richTextBox1.Text);
+                        isCurrentFileSaved = true;
+                    }
+                    else
+                    {
+                        SaveFileDialog f = new SaveFileDialog();
+                        f.Filter = "Text File|*.txt";
+                        f.ShowDialog();
+                        File.WriteAllText(f.FileName, richTextBox1.Text);
+                        isCurrentFileSaved = true;
+
+                        filename = f.FileName;
+                        filePath = f.FileName;
+                    }
                     isChanged = false;
+                    this.Text = filename;
+                    this.Close();
                 }
                 else if (r == DialogResult.No)
                 {
-                    richTextBox1.Text = "";
+                    this.Close();
                 }
             }
             else
@@ -59,16 +69,58 @@ namespace WinFormsApp14
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.ShowDialog();
-            string text = File.ReadAllText(ofd.FileName);
-            richTextBox1.Text = text;
-            this.Name = ofd.FileName;
-            filename = ofd.FileName;
-            filePath = ofd.FileName;
-            isCurrentFileSaved = true;
-            this.Text = filename;
-            isChanged = false;
+            if (isChanged)
+            {
+                DialogResult r = MessageBox.Show("Do you want to save your changes?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
+                if (r == DialogResult.Yes)
+                {
+                    if (isCurrentFileSaved)
+                    {
+                        File.WriteAllText(filePath, richTextBox1.Text);
+                        isCurrentFileSaved = true;
+                    }
+                    else
+                    {
+                        SaveFileDialog f = new SaveFileDialog();
+                        f.Filter = "Text File|*.txt";
+                        f.ShowDialog();
+                        File.WriteAllText(f.FileName, richTextBox1.Text);
+                        isCurrentFileSaved = true;
+
+                        filename = f.FileName;
+                        filePath = f.FileName;
+                    }
+                    isChanged = false;
+                    this.Text = filename;
+                }
+                else if (r == DialogResult.No)
+                {
+                    OpenFileDialog ofd = new OpenFileDialog();
+                    ofd.ShowDialog();
+                    string text = File.ReadAllText(ofd.FileName);
+                    richTextBox1.Text = text;
+                    this.Name = ofd.FileName;
+                    filename = ofd.FileName;
+                    filePath = ofd.FileName;
+                    isCurrentFileSaved = true;
+                    this.Text = filename;
+                    isChanged = false;
+                }
+
+            }
+            else
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.ShowDialog();
+                string text = File.ReadAllText(ofd.FileName);
+                richTextBox1.Text = text;
+                this.Name = ofd.FileName;
+                filename = ofd.FileName;
+                filePath = ofd.FileName;
+                isCurrentFileSaved = true;
+                this.Text = filename;
+                isChanged = false;
+            }
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,15 +130,25 @@ namespace WinFormsApp14
                 DialogResult r = MessageBox.Show("Do you want to save your changes?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
                 if (r == DialogResult.Yes)
                 {
-                    SaveFileDialog f = new SaveFileDialog();
-                    f.Filter = "Text File|*.txt";
-                    f.ShowDialog();
-                    File.WriteAllText(f.FileName, richTextBox1.Text);
-                    richTextBox1.Text = "";
-                    filename = f.FileName;
-                    filePath = f.FileName;
-                    this.Text = filename;
+                    if (isCurrentFileSaved)
+                    {
+                        File.WriteAllText(filePath, richTextBox1.Text);
+                        isCurrentFileSaved = true;
+                    }
+                    else
+                    {
+                        SaveFileDialog f = new SaveFileDialog();
+                        f.Filter = "Text File|*.txt";
+                        f.ShowDialog();
+                        File.WriteAllText(f.FileName, richTextBox1.Text);
+                        isCurrentFileSaved = true;
+
+                        filename = f.FileName;
+                        filePath = f.FileName;
+                    }
                     isChanged = false;
+                    this.Text = filename;
+
                 }
                 else if (r == DialogResult.No)
                 {
@@ -148,6 +210,85 @@ namespace WinFormsApp14
         {
             PrintPreviewDialog a = new PrintPreviewDialog();
             a.ShowDialog();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog f = new FontDialog();
+            f.ShowDialog();
+            richTextBox1.Font = f.Font;
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Undo();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Redo();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Cut();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Copy();
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Paste();
+        }
+
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (isChanged)
+                {
+                    DialogResult r = MessageBox.Show("Do you want to save your changes?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
+                    if (r == DialogResult.Yes)
+                    {
+                        if (isCurrentFileSaved)
+                        {
+                            File.WriteAllText(filePath, richTextBox1.Text);
+                            isCurrentFileSaved = true;
+                        }
+                        else
+                        {
+                            SaveFileDialog f = new SaveFileDialog();
+                            f.Filter = "Text File|*.txt";
+                            f.ShowDialog();
+                            File.WriteAllText(f.FileName, richTextBox1.Text);
+                            isCurrentFileSaved = true;
+
+                            filename = f.FileName;
+                            filePath = f.FileName;
+                        }
+                        isChanged = false;
+                        this.Text = filename;
+                        this.Close();
+                    }
+                    else if (r == DialogResult.No)
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    this.Close();
+                }
+            } else if (e.KeyCode == Keys.Left)
+            {
+                richTextBox1.RightToLeft = RightToLeft.No;
+            } else if ((e.KeyCode == Keys.Right))
+            {
+                richTextBox1.RightToLeft = RightToLeft.Yes;
+            }
         }
     }
 }
